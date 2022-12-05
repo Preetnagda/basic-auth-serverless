@@ -1,23 +1,17 @@
-import express, { Request, Response, Application, NextFunction } from "express";
 import { json } from "body-parser";
 import cors from "cors";
 
-import AppRouter from "./routes/router";
+import container from "./di/inversify.config";
+import { InversifyExpressServer } from 'inversify-express-utils';
 
-const app: Application = express();
+import "./controller/auth.controller";
 
-app.use(cors());
-app.use(json());
-
-app.use("/api", AppRouter);
-
-app.get("/heartbeat", (req: Request, res: Response): void => {
-  res.send({});
+let server = new InversifyExpressServer(container);
+server.setConfig((app) => {
+  app.use(cors());
+  app.use(json());
 });
 
-// error handler
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  res.status(400).send(err.message);
-});
+let app = server.build();
 
 export default app;

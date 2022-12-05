@@ -1,5 +1,4 @@
 import { config } from "dotenv";
-import * as dynamo from "dynamodb";
 config();
 
 import app from "./app";

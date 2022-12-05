@@ -1,16 +1,14 @@
-import * as Joi from "joi";
+import {body} from "express-validator";
 
-const registrationSchema = Joi.object({
-  username: Joi.string().alphanum().min(3).max(30).required(),
+const loginValidator = [
+  body("username").isString(),
+  body("password").isString(),
+]
 
-  password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")),
+const registrationValidator = [
+  body("username").isString(),
+  body("password").isString(),
+  body("email").isEmail(),
+]
 
-  //   repeat_password: Joi.ref("password"),
-
-  email: Joi.string().email({
-    minDomainSegments: 2,
-    tlds: { allow: ["com", "net"] },
-  }),
-});
-
-export { registrationSchema };
+export { loginValidator, registrationValidator };

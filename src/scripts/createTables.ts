@@ -1,6 +1,9 @@
-import { CreateTableCommand } from "@aws-sdk/client-dynamodb";
-import { ddbClient } from "../libs/ddbClient";
-
+// Create service client module using ES6 syntax.
+import { DynamoDBClient, CreateTableCommand } from "@aws-sdk/client-dynamodb";
+// Set the AWS Region.
+// Create an Amazon DynamoDB service client object.
+const ddbClient = new DynamoDBClient({region: process.env.AWS_REGION});
+export { ddbClient };
 import { config } from "dotenv";
 config();
 
