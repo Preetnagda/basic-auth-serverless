@@ -6,12 +6,12 @@ on:
       - main
 
 env:
-  LAMBDA_FUNCTION_NAME: "example-function"
+  LAMBDA_FUNCTION_NAME: "basic-auth"
 
 jobs:
   deploy_lambda:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout github code
         uses: actions/checkout@v3
