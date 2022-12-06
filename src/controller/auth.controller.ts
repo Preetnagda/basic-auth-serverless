@@ -21,10 +21,6 @@ export class AuthController implements interfaces.Controller {
   @httpPost("/login", ...loginValidator)
   @validateWithRes()
   public login(@requestBody() _user:{username: string, password: string}, @request() req: Request, @response() res: Response) {
-    // const errors = validationResult(req);
-    // if(!errors.isEmpty()){
-    //   return res.status(400).send(errors.array());
-    // }
 
     return this.userService.getUserAuthDetails(_user.username)
       .then(user => {
@@ -47,6 +43,7 @@ export class AuthController implements interfaces.Controller {
         });
     })
     .catch(err => {
+      console.error(err);
       res.status(400).send({ message: err})})
   }
 
