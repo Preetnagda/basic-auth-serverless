@@ -22,7 +22,7 @@ Creating a trigger point for the lambda and dynamodb tables workflows is not inc
 
 The repository demonstrates deploying code to lambda which is a part of "behind the scenes" of automated workflows, and can be used for education purposes and building concepts on AWS Lambda.
 
-![Implementation!](./docs/diagram.jpg)
+![Implementation!](/docs/diagram.jpg)
 
 ## Endpoints
 

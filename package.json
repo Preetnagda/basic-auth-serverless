@@ -1,5 +1,5 @@
 {
-  "name": "synergy-be",
+  "name": "basic-auth",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,8 @@
     "start": "nodemon ./src/index.ts",
     "create-table": "ts-node -r dotenv/config ./src/scripts/createTables.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "npx tsc",
+    "deploy": "aws lambda update-function-code --function-name=basic-auth --zip-file=fileb://deploy.zip"
   },
   "author": "",
   "license": "ISC",
